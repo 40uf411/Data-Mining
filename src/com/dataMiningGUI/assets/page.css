@@ -1,0 +1,41 @@
+.page{
+    -fx-background-color: rgba(255, 255, 255, 1);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.page-1{
+    -fx-background-color:  #0be881;
+}
+.page-2{
+    -fx-background-color:  #ef5777;
+}
+.page *{
+/*    -fx-background-color: rgba(255, 255, 255, 0);*/
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.page-2 .db_table{
+    -fx-min-height: 100%;
+}
+.page-2 .db_table,
+.page-2 .db_table *{
+/*    -fx-background-color: rgba(255, 255, 255, .2);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;*/
+
+}
+.page-3{
+    -fx-background-color:  #0fbcf9;
+}
+.page-4{
+    -fx-background-color: #ef9c3f;
+}
+.page-5{
+    -fx-background-color: #5f27cd;
+}
+.page-6{
+    -fx-background-color: #192A56;
+}
+.page-6 .output{
+    -fx-background-color: #f3f3f3;
+}

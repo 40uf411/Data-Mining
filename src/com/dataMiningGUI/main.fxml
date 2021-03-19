@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dataMiningGUI.Main">
+   <children>
+      <AnchorPane prefHeight="480.0" prefWidth="801.0" style="-fx-background-color: #dddd;" stylesheets="@assets/page.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="17.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="227.0" style="-fx-background-color: white;" styleClass="menu" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <Button fx:id="btn_dataset" layoutX="1.0" layoutY="190.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="View the dataset" wrapText="true" />
+                  <Button fx:id="btn_basic_info" layoutX="1.0" layoutY="142.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Basic information" wrapText="true" />
+                  <Button fx:id="btn_graphs" layoutX="1.0" layoutY="238.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Box plots" wrapText="true" />
+                  <Text layoutX="46.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dataset name:" AnchorPane.topAnchor="14.41796875">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="63.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thyroid_Dataset.txt">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btn_histogram" layoutY="285.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Histograms" wrapText="true" />
+                  <Button fx:id="btn_scatterplot" layoutY="333.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Scatter plot" wrapText="true" />
+                  <Button fx:id="btn_clustering" layoutX="-1.0" layoutY="381.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Clustering" wrapText="true" />
+                  <Button fx:id="btn_freqItm" layoutY="429.0" mnemonicParsing="false" onAction="#handle" prefHeight="48.0" prefWidth="227.0" text="Frequent Items" wrapText="true" />
+               </children>
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <stylesheets>
+                  <URL value="@assets/button.css" />
+                  <URL value="@assets/menu.css" />
+               </stylesheets>
+            </AnchorPane>
+            <Pane fx:id="pnl_scatterplot" layoutX="290.0" layoutY="45.0" prefHeight="316.0" prefWidth="468.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-4" />
+               </styleClass>
+               <children>
+                  <ComboBox fx:id="att1" layoutX="162.0" layoutY="39.0" prefWidth="150.0" />
+                  <ComboBox fx:id="att2" layoutX="510.0" layoutY="39.0" prefWidth="150.0" />
+                  <Button fx:id="button_scatter" layoutX="818.0" layoutY="39.0" mnemonicParsing="false" onAction="#handle" prefHeight="25.0" prefWidth="143.0" text="Load scatter plot">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <ScatterChart fx:id="scatter_plot" layoutX="-4.0" layoutY="117.0" prefHeight="382.0" prefWidth="987.0">
+                     <xAxis>
+                        <NumberAxis side="BOTTOM">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </NumberAxis>
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </ScatterChart>
+                  <Label layoutX="70.0" layoutY="41.0" prefHeight="21.0" prefWidth="92.0" text="Attribute 1: ">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="remove_btn" layoutX="438.0" layoutY="499.0" mnemonicParsing="false" onAction="#remove_plot" prefHeight="31.0" prefWidth="143.0" text="Remove Series">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="411.0" layoutY="41.0" prefHeight="21.0" prefWidth="92.0" text="Attribute 2: ">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_dataset" layoutX="270.0" layoutY="25.0" prefHeight="316.0" prefWidth="468.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-2" />
+               </styleClass>
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="568.0" prefWidth="1004.0">
+                     <content>
+                        <TableView fx:id="db_table" styleClass="db_table" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_graphs" layoutX="300.0" layoutY="24.0" prefHeight="316.0" prefWidth="468.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-3" />
+               </styleClass>
+               <children>
+                  <Pane fx:id="pnl_boxplot" prefHeight="568.0" prefWidth="1005.0">
+                     <children>
+                        <Button fx:id="btn_boxplot" layoutX="105.0" layoutY="119.0" mnemonicParsing="false" onAction="#handle" text="Show all the attributes box plot" />
+                        <Button fx:id="btn_attr_boxplot" layoutX="485.0" layoutY="187.0" mnemonicParsing="false" onAction="#handle" text="Show box plot" />
+                        <ChoiceBox fx:id="select_attr" layoutX="326.0" layoutY="187.0" prefWidth="150.0" />
+                        <Label layoutX="105.0" layoutY="190.0" text="Select the index of the attribute:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_freqitm" layoutX="154.0" layoutY="-51.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-6" />
+               </styleClass>
+               <children>
+                  <ScrollPane layoutX="28.0" layoutY="308.0" prefHeight="244.0" prefWidth="950.0">
+                     <content>
+                        <Text fx:id="txt_output" strokeType="OUTSIDE" strokeWidth="0.0" text="The output will be printed here." />
+                     </content>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ScrollPane>
+                  <Text fill="WHITE" layoutX="28.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simple discretisation:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="28.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apriori:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="combo_attrIndx" layoutX="378.0" layoutY="87.0" prefWidth="150.0" />
+                  <ComboBox fx:id="combo_nbrp" layoutX="731.0" layoutY="87.0" prefWidth="150.0" />
+                  <Button fx:id="btn_runsd" layoutX="937.0" layoutY="87.0" mnemonicParsing="false" text="RUN">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_runap" layoutX="937.0" layoutY="157.0" mnemonicParsing="false" text="RUN">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Slider fx:id="slider_sup" layoutX="383.0" layoutY="160.0" showTickLabels="true" showTickMarks="true" />
+                  <Slider fx:id="slider_conf" layoutX="736.0" layoutY="160.0" showTickLabels="true" showTickMarks="true" />
+                  <Text fill="WHITE" layoutX="595.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of pieces:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="595.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confidence:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="219.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attribute index:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="219.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Support:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_clustering" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-5" />
+               </styleClass>
+               <children>
+                  <Label layoutX="234.0" layoutY="36.0" text="Number of clusters:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="469.0" layoutY="36.0" text="Number of iterations:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_runCluster" layoutX="929.0" layoutY="31.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="RUN">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                <AnchorPane layoutX="29.0" layoutY="193.0" minHeight="0.0" minWidth="0.0" prefHeight="358.0" prefWidth="950.0">
+                     <children>
+                        <TableView fx:id="cluster_table" prefHeight="358.0" prefWidth="950.0" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="28.0" layoutY="91.0" text="F-Score:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="121.0" text="WCSS:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="27.0" layoutY="36.0" text="Method:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="combo_method" layoutX="88.0" layoutY="33.0" prefHeight="25.0" prefWidth="131.0" />
+                  <ComboBox fx:id="combo_nbrcluster" layoutX="366.0" layoutY="33.0" prefHeight="25.0" prefWidth="82.0" />
+                  <ComboBox fx:id="combo_nbrit" layoutX="612.0" layoutY="33.0" prefHeight="25.0" prefWidth="82.0" />
+                  <Text fx:id="txt_fscore" fill="WHITE" layoutX="147.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Run the clustering process to see the results">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txt_wcss" fill="WHITE" layoutX="147.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Run the clustering process to see the results">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="28.0" layoutY="149.0" text="Execution time:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="txt_execTime" fill="WHITE" layoutX="147.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Run the clustering process to see the results">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="709.0" layoutY="36.0" text="NumLocal:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="combo_nmlcl" layoutX="788.0" layoutY="33.0" prefHeight="25.0" prefWidth="73.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_histogram" layoutX="280.0" layoutY="35.0" prefHeight="316.0" prefWidth="468.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-2" />
+               </styleClass>
+               <children>
+                  <ComboBox fx:id="combo_histo" layoutX="278.0" layoutY="29.0" prefHeight="25.0" prefWidth="92.0" />
+                  <Button fx:id="btn_update_histo" layoutX="841.0" layoutY="29.0" mnemonicParsing="false" onAction="#handle" prefHeight="25.0" prefWidth="150.0" text="show">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <BarChart fx:id="barchart_f" layoutX="-13.0" layoutY="85.0" prefHeight="414.0" prefWidth="1017.0">
+                     <xAxis>
+                        <CategoryAxis prefHeight="21.0" prefWidth="931.0" fx:id="xAxis">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </CategoryAxis>
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis fx:id="yAxis" prefHeight="359.0" prefWidth="44.0" side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <Text layoutX="43.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the index of the attribute:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="remove_btn1" layoutX="484.0" layoutY="527.0" mnemonicParsing="false" onAction="#remove_plot" prefHeight="31.0" prefWidth="143.0" text="Remove Series">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Text layoutX="413.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insert the size of the intervale:">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="intervaleSize" layoutX="640.0" layoutY="23.0" maxHeight="-Infinity" prefHeight="0.0" prefWidth="150.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+            <Pane fx:id="pnl_basic_info" prefHeight="316.0" prefWidth="468.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <effect>
+                  <DropShadow color="#0000004d" radius="12.25" width="30.0" />
+               </effect>
+               <styleClass>
+                  <String fx:value="page" />
+                  <String fx:value="page-1" />
+               </styleClass>
+               <children>
+                  <GridPane prefHeight="450.0" prefWidth="525.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="0.0" />
+                      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of attributes" wrappingWidth="175.19999623298645">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of rows" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Min" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mean" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Median" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mode" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Q1" GridPane.rowIndex="7">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Q3" GridPane.rowIndex="8">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txt_num_attr" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" />
+                        <Text fx:id="txt_num_rows" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text fx:id="txt_max" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text fx:id="txt_min" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Text fx:id="txt_mean" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Text fx:id="txt_median" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Text fx:id="txt_mode" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Text fx:id="txt_q1" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Text fx:id="txt_q3" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Unique values" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="txt_unq_val" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Symetric" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <Text fx:id="txt_sym" strokeType="OUTSIDE" strokeWidth="0.0" text="Please click on &quot;basic information&quot; to load the data" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
